@@ -26,8 +26,8 @@ CREATE TABLE poste (
 CREATE TABLE employe (
 	idemploye INTEGER(10) PRIMARY KEY,
 	nom VARCHAR(45) NOT NULL,
-    fkposte SMALLINT(5),
-    CONSTRAINT fkposteemploye  FOREIGN KEY (fkposte) REFERENCES poste (idposte)
+	fkposte SMALLINT(5),
+	CONSTRAINT fkposteemploye  FOREIGN KEY (fkposte) REFERENCES poste (idposte)
 );
 
 CREATE TABLE animal (
@@ -45,15 +45,15 @@ CREATE TABLE terrain (
 	surface FLOAT NOT NULL,
 	longitude FLOAT NOT NULL,
 	latitude FLOAT NOT NULL,
-    fktype_terre INTEGER(10),
+	fktype_terre INTEGER(10),
 	CONSTRAINT fktypeterrain  FOREIGN KEY (fktype_terre) REFERENCES type_terre (idtype_terre)
 );
 
 CREATE TABLE elevage (
 	idelevage INTEGER(10) PRIMARY KEY,
    	capacite INTEGER(10),
-    fkanimal INTEGER(10),
-    fkterrain INTEGER(10),
+	fkanimal INTEGER(10),
+	fkterrain INTEGER(10),
 	CONSTRAINT fkanimalelevage  FOREIGN KEY (fkanimal) REFERENCES animal (idanimal),
 	CONSTRAINT fkterrainelevage  FOREIGN KEY (fkterrain) REFERENCES terrain (idterrain)
 );
@@ -78,9 +78,9 @@ CREATE TABLE culture (
 	idculture INTEGER(10) PRIMARY KEY,
    	annee TINYINT(3), #pourquoi 3 et pas 4??
 	rendement INTEGER(10),
-    fkplante INTEGER(10),
-    fkterrain INTEGER(10),
-    fkresponsable INTEGER(10),
+	fkplante INTEGER(10),
+	fkterrain INTEGER(10),
+	fkresponsable INTEGER(10),
 	CONSTRAINT fkplanteculture  FOREIGN KEY (fkplante) REFERENCES plante (idplante),
 	CONSTRAINT fkterrainculture  FOREIGN KEY (fkterrain) REFERENCES terrain (idterrain),
 	CONSTRAINT fkresponsableculture  FOREIGN KEY (fkresponsable) REFERENCES employe (idemploye)
@@ -88,8 +88,8 @@ CREATE TABLE culture (
 
 CREATE TABLE traitement (
 	qtx SMALLINT(6),
-    fkproduit INTEGER(10),
-    fkculture INTEGER(10),
+	fkproduit INTEGER(10),
+	fkculture INTEGER(10),
 	CONSTRAINT fkproduittraitement FOREIGN KEY (fkproduit) REFERENCES produit (idproduit),
 	CONSTRAINT fkculturetraitement FOREIGN KEY (fkculture) REFERENCES culture (idculture)
 );
